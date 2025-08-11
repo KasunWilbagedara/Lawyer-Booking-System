@@ -9,7 +9,7 @@ const SpecialityMenu = () => {
       <div className="grid grid-cols-3 gap-8 max-w-4xl">
         {specialityData.map((item, index) => (
           <Link
-            to={`/doctors/${item.speciality}`}
+            to={`/lawyers/${item.speciality}`}
             onClick={() => window.scrollTo(0, 0)}
             key={index}
             className="flex flex-col items-center cursor-pointer hover:-translate-y-2 transition-transform duration-300"

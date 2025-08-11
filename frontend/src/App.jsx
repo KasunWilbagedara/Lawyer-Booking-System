@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Lawyer from './pages/Lawyer'
+import Lawyers from './pages/Lawyers'
 import Login from './pages/Login'
 import About from './pages/About'
 import Contact from './pages/Contact'
@@ -21,12 +21,12 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/doctors' element={<Lawyer />} />
-        <Route path='/doctors/:speciality' element={<Lawyer />} />
+        <Route path='/lawyers' element={<Lawyers />} />
+        <Route path='/lawyers/:speciality' element={<Lawyers />} />
         <Route path='/login' element={<Login />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/appointment/:docId' element={<Appointment />} />
+        <Route path='/appointment/:lawId' element={<Appointment />} />
         <Route path='/my-appointments' element={<MyAppointments />} />
         <Route path='/my-profile' element={<MyProfile />} />
         <Route path='/verify' element={<Verify />} />
