@@ -38,9 +38,13 @@ import HealthLaw from './HealthLaw.jpg'
 import PropertyLaw from './PropertyLaw.webp'
 import ceo1 from './ceo1.png'
 import ceo2 from './ceo2.png'
+import bg from './bg.jpg'
+import about_imagebg from './about_imagebg.jpg'
 
 
 export const assets = {
+    about_imagebg,
+    bg,
     appointment_img,
     header_img,
     group_profiles,
