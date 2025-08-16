@@ -26,7 +26,7 @@ const AllAppointments = () => {
           <p>Patient</p>
           <p>Age</p>
           <p>Date & Time</p>
-          <p>Doctor</p>
+          <p>Lawyer</p>
           <p>Fees</p>
           <p>Action</p>
         </div>
@@ -39,7 +39,7 @@ const AllAppointments = () => {
             <p className='max-sm:hidden'>{calculateAge(item.userData.dob)}</p>
             <p>{slotDateFormat(item.slotDate)}, {item.slotTime}</p>
             <div className='flex items-center gap-2'>
-              <img src={item.docData.image} className='w-8 rounded-full bg-gray-200' alt="" /> <p>{item.docData.name}</p>
+              <img src={item.docData.image} className='w-8 rounded-full bg-gray-200' alt="" /> <p>{item.lawData.name}</p>
             </div>
             <p>{currency}{item.amount}</p>
             {item.cancelled ? <p className='text-red-400 text-xs font-medium'>Cancelled</p> : item.isCompleted ? <p className='text-green-500 text-xs font-medium'>Completed</p> : <img onClick={() => cancelAppointment(item._id)} className='w-10 cursor-pointer' src={assets.cancel_icon} alt="" />}

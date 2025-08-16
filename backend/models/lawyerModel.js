@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const doctorSchema = new mongoose.Schema({
+const lawyerSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
@@ -16,5 +16,5 @@ const doctorSchema = new mongoose.Schema({
     date: { type: Number, required: true },
 }, { minimize: false })
 
-const doctorModel = mongoose.models.doctor || mongoose.model("doctor", doctorSchema);
-export default doctorModel;
+const lawyerModel = mongoose.models.lawyer || mongoose.model("lawyer", lawyerSchema);
+export default lawyerModel;

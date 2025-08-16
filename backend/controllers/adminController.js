@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import appointmentModel from "../models/appointmentModel.js";
-import doctorModel from "../models/doctorModel.js";
+import lawyerModel from "../models/lawyerModel.js";
 import bcrypt from "bcrypt";
 import validator from "validator";
 import { v2 as cloudinary } from "cloudinary";
@@ -57,15 +57,15 @@ const appointmentCancel = async (req, res) => {
 
 }
 
-// API for adding Doctor
-const addDoctor = async (req, res) => {
+// API for adding Lawyer
+const addLawyer = async (req, res) => {
 
     try {
 
         const { name, email, password, speciality, degree, experience, about, fees, address } = req.body
         const imageFile = req.file
 
-        // checking for all data to add doctor
+        // checking for all data to add Lawyer
         if (!name || !email || !password || !speciality || !degree || !experience || !about || !fees || !address) {
             return res.json({ success: false, message: "Missing Details" })
         }
@@ -88,7 +88,7 @@ const addDoctor = async (req, res) => {
         const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: "image" })
         const imageUrl = imageUpload.secure_url
 
-        const doctorData = {
+        const lawyerData = {
             name,
             email,
             image: imageUrl,
@@ -102,9 +102,9 @@ const addDoctor = async (req, res) => {
             date: Date.now()
         }
 
-        const newDoctor = new doctorModel(doctorData)
-        await newDoctor.save()
-        res.json({ success: true, message: 'Doctor Added' })
+        const newLawyer = new lawyerModel(lawyerData)
+        await newLawyer.save()
+        res.json({ success: true, message: 'Lawyer Added' })
 
     } catch (error) {
         console.log(error)
@@ -112,12 +112,12 @@ const addDoctor = async (req, res) => {
     }
 }
 
-// API to get all doctors list for admin panel
-const allDoctors = async (req, res) => {
+// API to get all Lawyers list for admin panel
+const allLawyers = async (req, res) => {
     try {
 
-        const doctors = await doctorModel.find({}).select('-password')
-        res.json({ success: true, doctors })
+        const Lawyers = await lawyerModel.find({}).select('-password')
+        res.json({ success: true, Lawyers })
 
     } catch (error) {
         console.log(error)
@@ -129,12 +129,12 @@ const allDoctors = async (req, res) => {
 const adminDashboard = async (req, res) => {
     try {
 
-        const doctors = await doctorModel.find({})
+        const Lawyers = await lawyerModel.find({})
         const users = await userModel.find({})
         const appointments = await appointmentModel.find({})
 
         const dashData = {
-            doctors: doctors.length,
+            Lawyers: Lawyers.length,
             appointments: appointments.length,
             patients: users.length,
             latestAppointments: appointments.reverse()
@@ -152,7 +152,7 @@ export {
     loginAdmin,
     appointmentsAdmin,
     appointmentCancel,
-    addDoctor,
-    allDoctors,
+    addLawyer,
+    allLawyers,
     adminDashboard
 }
