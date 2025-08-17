@@ -8,7 +8,7 @@ const authLawyer = async (req, res, next) => {
     }
     try {
         const token_decode = jwt.verify(dtoken, process.env.JWT_SECRET)
-        req.body.docId = token_decode.id
+        req.body.lawId = token_decode.id
         next()
     } catch (error) {
         console.log(error)

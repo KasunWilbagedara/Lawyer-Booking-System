@@ -116,8 +116,8 @@ const addLawyer = async (req, res) => {
 const allLawyers = async (req, res) => {
     try {
 
-        const Lawyers = await lawyerModel.find({}).select('-password')
-        res.json({ success: true, Lawyers })
+        const lawyers = await lawyerModel.find({}).select('-password')
+        res.json({ success: true, lawyers })
 
     } catch (error) {
         console.log(error)
@@ -129,12 +129,12 @@ const allLawyers = async (req, res) => {
 const adminDashboard = async (req, res) => {
     try {
 
-        const Lawyers = await lawyerModel.find({})
+        const lawyers = await lawyerModel.find({})
         const users = await userModel.find({})
         const appointments = await appointmentModel.find({})
 
         const dashData = {
-            Lawyers: Lawyers.length,
+            lawyers: lawyers.length,
             appointments: appointments.length,
             patients: users.length,
             latestAppointments: appointments.reverse()

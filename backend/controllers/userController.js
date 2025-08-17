@@ -139,7 +139,7 @@ const bookAppointment = async (req, res) => {
         const lawData = await lawyerModel.findById(lawId).select("-password")
 
         if (!lawData.available) {
-            return res.json({ success: false, message: 'Doctor Not Available' })
+            return res.json({ success: false, message: 'lawyer Not Available' })
         }
 
         let slots_booked = lawData.slots_booked
@@ -201,12 +201,12 @@ const cancelAppointment = async (req, res) => {
 
         await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true })
 
-        // releasing doctor slot 
+        // releasing lawyer slot 
         const { lawId, slotDate, slotTime } = appointmentData
 
-        const doctorData = await lawyerModel.findById(lawId)
+        const lawyerData = await lawyerModel.findById(lawId)
 
-        let slots_booked = doctorData.slots_booked
+        let slots_booked = lawyerData.slots_booked
 
         slots_booked[slotDate] = slots_booked[slotDate].filter(e => e !== slotTime)
 

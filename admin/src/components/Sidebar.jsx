@@ -9,6 +9,8 @@ const Sidebar = () => {
   const { dToken } = useContext(LawyerContext)
   const { aToken } = useContext(AdminContext)
 
+  
+
   return (
     <div className='min-h-screen bg-white border-r'>
       {aToken && <ul className='text-[#515151] mt-5'>
