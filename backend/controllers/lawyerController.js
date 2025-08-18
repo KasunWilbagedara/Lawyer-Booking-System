@@ -9,7 +9,7 @@ const loginLawyer = async (req, res) => {
     try {
 
         const { email, password } = req.body
-        const user = await lawyerModel.findOne({ email })
+        const user = await lawyerModel.findById(req.body.lawId) || await lawyerModel.findOne({ email })
 
         if (!user) {
             return res.json({ success: false, message: "Invalid credentials" })
@@ -23,7 +23,6 @@ const loginLawyer = async (req, res) => {
         } else {
             res.json({ success: false, message: "Invalid credentials" })
         }
-
 
     } catch (error) {
         console.log(error)
@@ -136,10 +135,15 @@ const lawyerProfile = async (req, res) => {
 // API to update lawyer profile data from  lawyer Panel
 const updateLawyerProfile = async (req, res) => {
     try {
+        const { lawId, name, fees, address, about, available } = req.body
 
-        const { lawId, fees, address, available } = req.body
-
-        await lawyerModel.findByIdAndUpdate(lawId, { fees, address, available })
+        await lawyerModel.findByIdAndUpdate(lawId, {
+            name,
+            fees,
+            address,
+            about,
+            available
+        })
 
         res.json({ success: true, message: 'Profile Updated' })
 
@@ -165,20 +169,18 @@ const lawyerDashboard = async (req, res) => {
             }
         })
 
-        let patients = []
+        let clients = []
 
         appointments.map((item) => {
-            if (!patients.includes(item.userId)) {
-                patients.push(item.userId)
+            if (!clients.includes(item.userId)) {
+                clients.push(item.userId)
             }
         })
-
-
 
         const dashData = {
             earnings,
             appointments: appointments.length,
-            patients: patients.length,
+            clients: clients.length,
             latestAppointments: appointments.reverse()
         }
 

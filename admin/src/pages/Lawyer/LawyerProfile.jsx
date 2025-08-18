@@ -15,6 +15,7 @@ const LawyerProfile = () => {
         try {
 
             const updateData = {
+                name: profileData.name,
                 address: profileData.address,
                 fees: profileData.fees,
                 about: profileData.about,
@@ -55,15 +56,26 @@ const LawyerProfile = () => {
 
                 <div className='flex-1 border border-stone-100 rounded-lg p-8 py-7 bg-white'>
 
-                    {/* ----- Doc Info : name, degree, experience ----- */}
+                    {/* ----- Lawyer Info : name, degree, experience ----- */}
 
-                    <p className='flex items-center gap-2 text-3xl font-medium text-gray-700'>{profileData.name}</p>
-                    <div className='flex items-center gap-2 mt-1 text-gray-600'>
-                        <p>{profileData.degree} - {profileData.speciality}</p>
-                        <button className='py-0.5 px-2 border text-xs rounded-full'>{profileData.experience}</button>
-                    </div>
+                    <p className='flex items-center gap-2 text-3xl font-medium text-gray-700'>
+                {isEdit
+                    ? <input
+                        type="text"
+                        className="border rounded p-1 text-lg"
+                        value={profileData.name}
+                        onChange={(e) => setProfileData(prev => ({ ...prev, name: e.target.value }))}
+                    />
+                    : profileData.name
+                }
+                </p>
 
-                    {/* ----- Doc About ----- */}
+                <div className='flex items-center gap-2 mt-1 text-gray-600'>
+                <p>{profileData.degree} - {profileData.speciality}</p>
+                <button className='py-0.5 px-2 border text-xs rounded-full'>{profileData.experience}</button>
+                </div>
+
+                    {/* ----- Lawyer About ----- */}
                     <div>
                         <p className='flex items-center gap-1 text-sm font-medium text-[#262626] mt-3'>About :</p>
                         <p className='text-sm text-gray-600 max-w-[700px] mt-1'>

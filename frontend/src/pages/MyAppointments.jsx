@@ -21,8 +21,8 @@ const MyAppointments = () => {
         return dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2]
     }
 
-    // Getting User Appointments Data Using API
-    const getUserAppointments = async () => {
+    // Getting Client Appointments Data Using API
+    const getClientAppointments = async () => {
         try {
 
             const { data } = await axios.get(backendUrl + '/api/user/appointments', { headers: { token } })
@@ -43,7 +43,7 @@ const MyAppointments = () => {
 
             if (data.success) {
                 toast.success(data.message)
-                getUserAppointments()
+                getClientAppointments()
             } else {
                 toast.error(data.message)
             }
@@ -72,7 +72,7 @@ const MyAppointments = () => {
                     const { data } = await axios.post(backendUrl + "/api/user/verifyRazorpay", response, { headers: { token } });
                     if (data.success) {
                         navigate('/my-appointments')
-                        getUserAppointments()
+                        getClientAppointments()
                     }
                 } catch (error) {
                     console.log(error)
@@ -119,7 +119,7 @@ const MyAppointments = () => {
 
     useEffect(() => {
         if (token) {
-            getUserAppointments()
+            getClientAppointments()
         }
     }, [token])
 

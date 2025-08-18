@@ -23,7 +23,7 @@ const AllAppointments = () => {
       <div className='bg-white border rounded text-sm max-h-[80vh] overflow-y-scroll'>
         <div className='hidden sm:grid grid-cols-[0.5fr_3fr_1fr_3fr_3fr_1fr_1fr] grid-flow-col py-3 px-6 border-b'>
           <p>#</p>
-          <p>Patient</p>
+          <p>Client</p>
           <p>Age</p>
           <p>Date & Time</p>
           <p>Lawyer</p>

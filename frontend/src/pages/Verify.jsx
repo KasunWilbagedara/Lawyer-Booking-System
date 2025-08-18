@@ -20,7 +20,7 @@ const Verify = () => {
 
         try {
 
-            const { data } = await axios.post(backendUrl + "/api/user/verifyStripe", { success, appointmentId }, { headers: { token } })
+            const { data } = await axios.post(backendUrl + "/api/client/verifyStripe", { success, appointmentId }, { headers: { token } })
 
             if (data.success) {
                 toast.success(data.message)
@@ -38,7 +38,7 @@ const Verify = () => {
     }
 
     useEffect(() => {
-        if (token, appointmentId, success) {
+        if (token && appointmentId && success) {
             verifyStripe()
         }
     }, [token])
