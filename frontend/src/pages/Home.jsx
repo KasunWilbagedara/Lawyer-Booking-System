@@ -1,19 +1,18 @@
-import React from 'react'
-import Header from '../components/Header'
-import SpecialityMenu from '../components/SpecialityMenu'
-import TopLawyer from '../components/TopLawyer'
-import Banner from '../components/Banner'
-import TopLawyersComponent from '../components/TopLawyer'
+import React from 'react';
+import Header from '../components/Header';
+import SpecialityMenu from '../components/SpecialityMenu';
+import TopLawyer from '../components/TopLawyer';
+import Banner from '../components/Banner';
 
 const Home = () => {
   return (
     <div>
       <Header />
       <SpecialityMenu />
-      <TopLawyer/>
+      <TopLawyer />
       <Banner />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

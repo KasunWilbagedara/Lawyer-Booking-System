@@ -1,39 +1,59 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Lawyers from './pages/Lawyers'
-import Login from './pages/Login'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Appointment from './pages/Appointment'
-import MyAppointments from './pages/MyAppointments'
-import MyProfile from './pages/MyProfile'
-import Footer from './components/Footer'
+
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Verify from './pages/Verify'
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Lawyers from './pages/Lawyers';
+import Login from './pages/Login';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Appointment from './pages/Appointment';
+import MyAppointments from './pages/MyAppointments';
+import MyProfile from './pages/MyProfile';
+import Verify from './pages/Verify';
+import { assets } from './assets/assets';
 
 const App = () => {
   return (
-    <div className='mx-0'>
+    <>
       <ToastContainer />
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/lawyers' element={<Lawyers />} />
-        <Route path='/lawyers/:speciality' element={<Lawyers />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/appointment/:lawId' element={<Appointment />} />
-        <Route path='/my-appointments' element={<MyAppointments />} />
-        <Route path='/my-profile' element={<MyProfile />} />
-        <Route path='/verify' element={<Verify />} />
+       <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout background={assets.bg}>
+              <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Layout>
+              <About />
+            </Layout>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Layout >
+              <Contact />
+            </Layout>
+          }
+        />
+        <Route path="/lawyers" element={<Layout><Lawyers /></Layout>} />
+        <Route path="/lawyers/:speciality" element={<Layout><Lawyers /></Layout>} />
+        <Route path="/login" element={<Layout><Login /></Layout>} />
+        <Route path="/appointment/:lawId" element={<Layout><Appointment /></Layout>} />
+        <Route path="/my-appointments" element={<Layout><MyAppointments /></Layout>} />
+        <Route path="/my-profile" element={<Layout><MyProfile /></Layout>} />
+        <Route path="/verify" element={<Layout><Verify /></Layout>} />
       </Routes>
-      <Footer />
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default App
+export default App;
