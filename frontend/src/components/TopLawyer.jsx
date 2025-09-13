@@ -1,20 +1,28 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TopLawyers } from '../assets/assets'  // Assuming you export it properly
+import { TopLawyers } from '../assets/assets'  
 
 const TopLawyersComponent = () => {
   const navigate = useNavigate()
 
   return (
     <div className="bg-[#193241] py-12 flex flex-col items-center text-[#D68524]">
-      <h1 className="text-3xl font-semibold mb-8">Top Lawyers</h1>
+      <h1
+  className="text-4xl mb-8 font-bold"
+  style={{
+    textTransform: 'uppercase',
+    fontFamily: 'Outfit',
+    color: '#D68524'
+  }}
+>
+  Top Lawyers
+</h1>
       <div className="flex gap-6">
         {TopLawyers.map((lawyer, index) => (
           <div
             key={index}
             onClick={() => {
-              // For now no routing is given for lawyers; add if needed
-              // navigate(`/lawyer/${lawyer.id}`);
+              
               window.scrollTo(0, 0)
             }}
             className="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer max-w-[220px] hover:scale-105 transition-transform duration-300"

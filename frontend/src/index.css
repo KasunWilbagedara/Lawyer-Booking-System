@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +9,21 @@
 
 * {
     font-family: Outfit;
+}
+
+.merriweather-bold {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+}
+
+.roboto-regular {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.open-sans-regular {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
 
 .active hr {

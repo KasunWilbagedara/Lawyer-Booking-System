@@ -31,7 +31,7 @@ const App = () => {
         <Route
           path="/about"
           element={
-            <Layout>
+            <Layout background={assets.about_imagebg}>
               <About />
             </Layout>
           }
@@ -39,13 +39,13 @@ const App = () => {
         <Route
           path="/contact"
           element={
-            <Layout >
+            <Layout background={assets.about_imagebg}>
               <Contact />
             </Layout>
           }
         />
-        <Route path="/lawyers" element={<Layout><Lawyers /></Layout>} />
-        <Route path="/lawyers/:speciality" element={<Layout><Lawyers /></Layout>} />
+        <Route path="/lawyers" element={<Layout background={assets.bg}><Lawyers /></Layout>} />
+        <Route path="/lawyers/:speciality" element={<Layout background={assets.bg}><Lawyers /></Layout>} />
         <Route path="/login" element={<Layout><Login /></Layout>} />
         <Route path="/appointment/:lawId" element={<Appointment/> } />
         <Route path="/my-appointments" element={<Layout><MyAppointments /></Layout>} />
